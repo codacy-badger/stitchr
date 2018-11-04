@@ -1,0 +1,78 @@
+{
+  "name": "stitchr",
+  "productName": "stitchr",
+  "version": "0.0.0",
+  "description": "Stitchr application description",
+  "main": "src/index.js",
+  "repository": "https://github.com/cjacobs27/stitchr.git",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint --ext .js,.vue src",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:e2e": "npm run package && mocha tests/e2e",
+    "test:unit": "echo \"No unit tests configured\""
+  },
+  "keywords": [],
+  "authors": [
+    "Chelsey Jacobs <jacobs27c@gmail.com>",
+    "Benjamin Wibrew <benjamin.wibrew@gmail.com>"
+  ],
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "yarn"
+      },
+      "electronWinstallerConfig": {
+        "name": "stitchr"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "cjacobs27",
+        "name": "stitchr"
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "stitchr"
+      }
+    }
+  },
+  "dependencies": {
+    "electron-compile": "^6.4.4",
+    "electron-devtools-installer": "^2.1.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "vue": "^2.1.7"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "electron-forge": "^5.2.4",
+    "electron-prebuilt-compile": "3.0.13",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-vue": "^5.1.0",
+    "expect": "^24.1.0",
+    "mocha": "^5.2.0",
+    "spectron": "^5.0.0"
+  }
+}
