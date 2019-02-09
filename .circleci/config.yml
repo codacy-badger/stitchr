@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:11.9
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # System
+      - run:
+          name: Install system dependencies
+          command: |
+            sudo apt update -yq
+            sudo apt install xvfb libgtk-3-0 libxss1 libnss3 libasound2 -yq
+
+      # Dependencies
+      - restore_cache:
+          name: Restore Node package cache
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Run Yarn
+          command: yarn upgrade --non-interactive
+      - save_cache:
+          name: Save Node package cache
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+      # Lint & unit tests
+      - run:
+          name: Run linter
+          command: yarn lint
+      - run:
+          name: Run unit tests
+          command: yarn test:unit
+
+      # End-to-end tests
+      - run:
+          name: Run end-to-end tests
+          command: |
+            node_modules/.bin/electron-forge package
+      - run:
+          name: Run end-to-end tests
+          command: |
+            export DISPLAY=':99.0'
+            Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+            node_modules/.bin/mocha tests/e2e
