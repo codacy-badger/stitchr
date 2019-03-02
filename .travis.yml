@@ -7,6 +7,8 @@ matrix:
         dist: xenial
         sudo: required
     -   os: osx
+        osx_image: xcode10.2
+    -   os: windows
 cache:
   yarn: true
 notifications:
@@ -14,7 +16,13 @@ notifications:
 script:
   - yarn lint
   - yarn test:unit
-  - node_modules/.bin/electron-forge package
+  - electron-forge package
   - export DISPLAY=':99.0'
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-  - node_modules/.bin/mocha tests/e2e
+  - mocha tests/e2e
+#deploy:
+#  provider: releases
+#  api_key: $ENCRYPTED_GITHUB_TOKEN
+#  skip_cleanup: true
+#  on:
+#    tags: true
