@@ -13,7 +13,7 @@
     "lint": "eslint --ext .js,.vue src",
     "test": "npm run test:unit && npm run test:e2e",
     "test:e2e": "npm run package && mocha tests/e2e",
-    "test:unit": "echo \"No unit tests configured\""
+    "test:unit": "mocha tests/unit"
   },
   "keywords": [],
   "authors": [
