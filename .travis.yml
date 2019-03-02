@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - '11'
+matrix:
+  include:
+    -   os: linux
+        dist: xenial
+        sudo: required
+    -   os: osx
+cache:
+  yarn: true
+notifications:
+  email: false
+script:
+  - yarn lint
+  - yarn test:unit
+  - node_modules/.bin/electron-forge package
+  - export DISPLAY=':99.0'
+  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+  - node_modules/.bin/mocha tests/e2e
