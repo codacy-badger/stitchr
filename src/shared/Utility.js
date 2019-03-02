@@ -1,11 +1,8 @@
+/* eslint class-methods-use-this: "off" */
+
 class Utility {
-  constructor() {
-
-  }
-
   doAThing() {
-    return 'DONE A THING';
+    return 'DONE A THING'
   }
 }
-
 module.exports = Utility
