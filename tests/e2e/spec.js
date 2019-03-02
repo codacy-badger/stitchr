@@ -5,7 +5,7 @@ const path = require('path')
 let electronPath = path.join(__dirname, '..', '..', 'out', `stitchr-${process.platform}-${process.arch}`, 'stitchr')
 
 if (process.platform === 'win32') {
-  electronPath += '.cmd'
+  electronPath += '.exe'
 }
 
 describe('Application launch', function () {
