@@ -9,6 +9,9 @@ matrix:
     -   os: osx
         osx_image: xcode10.2
     -   os: windows
+  allow_failures:
+    -   os: osx
+    -   os: windows
 cache:
   yarn: true
 notifications:
