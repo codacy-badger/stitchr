@@ -1,4 +1,7 @@
 {
+  "plugins": [
+    "vue"
+  ],
   "extends": [
     "eslint:recommended",
     "eslint-config-airbnb",
@@ -10,5 +13,12 @@
     "import/no-unresolved": [2, { "ignore": ["electron"] }],
     "linebreak-style": 0,
     "semi": ["error", "never"]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js",".jsx",".vue"]
+      }
+    }
   }
 }

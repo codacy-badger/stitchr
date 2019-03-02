@@ -5,16 +5,13 @@
     <title>Stitchr</title>
 </head>
 <body>
-<div id="test"></div>
+<div id="root"></div>
 </body>
 
 <script>
     import Vue from 'vue';
-    import Test from './test';
+    import App from './renderer/App';
 
-    const app = new Vue(Test).$mount('#test');
-
-    app.text = "Electron Forge with Vue.js!";
-
+    new Vue(App).$mount('#root');
 </script>
 </html>

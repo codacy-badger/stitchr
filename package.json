@@ -36,7 +36,11 @@
         ]
       },
       "electronPackagerConfig": {
-        "packageManager": "yarn"
+        "packageManager": "yarn",
+        "ignore": [
+          "/.idea/",
+          "/.circleci/"
+        ]
       },
       "electronWinstallerConfig": {
         "name": "stitchr"
